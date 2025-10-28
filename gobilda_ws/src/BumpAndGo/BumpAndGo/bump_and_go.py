@@ -14,10 +14,10 @@ class State(Enum):
 
 
 
-ROBOT_WIDTH = 1.2
-ROBOT_LINEAR_SPEED = 10.0
-ROBOT_ANGULAR_SPEED = 0.5
-BUMP_DIST = 1.5
+ROBOT_WIDTH = 0.5
+ROBOT_LINEAR_SPEED = 0.5
+ROBOT_ANGULAR_SPEED = 0.2
+BUMP_DIST = 1.0
 
 
 
@@ -138,8 +138,8 @@ class BumpAndGo(Node):
 
     def transform_lidar_to_robot(self):
         # this function will transform the lidar coordinates to robot coordinates
-        x_lidar = 0.0
-        y_lidar = 0.0
+        x_lidar = 0.1
+        y_lidar = -0.1
         theta_lidar = 0.0
 
         robot_points = []
