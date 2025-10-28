@@ -119,7 +119,7 @@ class BumpAndGo(Node):
             # see if there is an opening of 4m infront of robot
             for point in robot_points:
                 if (-ROBOT_WIDTH/2 <= point[1] <= ROBOT_WIDTH/2): 
-                    if (0 <= point[0] <= 4):
+                    if (0 <= point[0] <= 2.5):
                         # there is an object within 4m infront of robot 
                         return (0.0, ROBOT_ANGULAR_SPEED)
                 
