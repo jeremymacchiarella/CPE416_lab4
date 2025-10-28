@@ -76,7 +76,7 @@ class BumpAndGo(Node):
         # check for laser timeout
         if (self.state != State.STOP):
             elapsed_since_last_scan = (now - self.last_scan_time).nanoseconds / 1e9
-            if (elapsed_since_last_scan > 2.0):
+            if (elapsed_since_last_scan > 3.5):
                 self.get_logger().info('Laser scan timeout, stopping robot')
                 self.state = State.STOP
                 return (0.0, 0.0)
