@@ -14,10 +14,10 @@ class State(Enum):
 
 
 
-ROBOT_WIDTH = 0.5
-ROBOT_LINEAR_SPEED = 1.0
+ROBOT_WIDTH = 1.2
+ROBOT_LINEAR_SPEED = 10.0
 ROBOT_ANGULAR_SPEED = 0.5
-BUMP_DIST = 1.0
+BUMP_DIST = 1.5
 
 
 
@@ -28,14 +28,14 @@ BUMP_DIST = 1.0
 class BumpAndGo(Node):
     def __init__(self):
         super().__init__('bump_and_go')
-        self.publisher_ = self.create_publisher(Twist, 'cmd_vel', 10)
+        self.publisher_ = self.create_publisher(TwistStamped, 'gobilda/cmd_vel', 10)
         self.subscription_ = self.create_subscription(
             LaserScan,
             'scan',
             self.bumper_callback,
             10)
         
-        self.velocity_msg = Twist()
+        self.velocity_msg = TwistStamped()
         self.laser_data = LaserScan()
 
         self.timer_period = 0.1
@@ -138,8 +138,8 @@ class BumpAndGo(Node):
 
     def transform_lidar_to_robot(self):
         # this function will transform the lidar coordinates to robot coordinates
-        x_lidar = 0.1
-        y_lidar = -0.1
+        x_lidar = 0.0
+        y_lidar = 0.0
         theta_lidar = 0.0
 
         robot_points = []
