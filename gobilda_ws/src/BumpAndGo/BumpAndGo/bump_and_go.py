@@ -28,7 +28,7 @@ BUMP_DIST = 1.0
 class BumpAndGo(Node):
     def __init__(self):
         super().__init__('bump_and_go')
-        self.publisher_ = self.create_publisher(TwistStamped, 'gobilda/cmd_vel', 10)
+        self.publisher_ = self.create_publisher(TwistStamped, 'cmd_vel', 10)
         self.subscription_ = self.create_subscription(
             LaserScan,
             'scan',
