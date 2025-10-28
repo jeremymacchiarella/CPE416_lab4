@@ -28,14 +28,14 @@ BUMP_DIST = 1.0
 class BumpAndGo(Node):
     def __init__(self):
         super().__init__('bump_and_go')
-        self.publisher_ = self.create_publisher(TwistStamped, 'cmd_vel', 10)
+        self.publisher_ = self.create_publisher(Twist, 'cmd_vel', 10)
         self.subscription_ = self.create_subscription(
             LaserScan,
             'scan',
             self.bumper_callback,
             10)
         
-        self.velocity_msg = TwistStamped()
+        self.velocity_msg = Twist()
         self.laser_data = LaserScan()
 
         self.timer_period = 0.1
