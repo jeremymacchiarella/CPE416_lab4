@@ -4,6 +4,7 @@ from sensor_msgs.msg import LaserScan
 from rclpy.node import Node
 from enum import Enum
 import math
+import time
 
 
 class State(Enum):
@@ -11,6 +12,7 @@ class State(Enum):
     BACKWARD = 2
     TURN = 3
     STOP = 4
+    PAUSE = 5
 
 
 
@@ -50,14 +52,24 @@ class BumpAndGo(Node):
 
         
         # call fsm
+
         vel = self.robot_controller()
         self.velocity_msg.twist.linear.x = vel[0]
         self.velocity_msg.twist.angular.z = vel[1]
+
+        
+        
         self.publisher_.publish(self.velocity_msg)
+
+        if (vel[0] == 0.0 or vel[1] == 0.0):
+            self.get_logger().info('sleeping for 2 secs')
+            time.sleep(2)
         
         
             
     def robot_controller(self) -> tuple[float, float]:
+        
+        
         robot_points = self.transform_lidar_to_robot()
 
         now = self.get_clock().now()
