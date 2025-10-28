@@ -61,7 +61,7 @@ class BumpAndGo(Node):
         
         self.publisher_.publish(self.velocity_msg)
 
-        if (vel[0] == 0.0 or vel[1] == 0.0):
+        if (vel[0] == 0.0 and vel[1] == 0.0):
             self.get_logger().info('sleeping for 2 secs')
             time.sleep(2)
         
