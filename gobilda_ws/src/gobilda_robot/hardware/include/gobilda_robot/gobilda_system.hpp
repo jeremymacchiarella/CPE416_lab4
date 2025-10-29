@@ -65,10 +65,10 @@ private:
   const double gain_fwd_us_per_rads = 27.0;
   const double gain_rev_us_per_rads = 20.0;
   const double cmd_deadband_rad_s   = 0.05;
-  const double top_fwd_us           = 1600.0;  // cap forward
-  const double top_rev_us           = 1400.0;  // cap reverse
-  const double min_us               = 1400.0;
-  const double max_us               = 1600.0;
+  const double top_fwd_us           = 1700.0;  // cap forward
+  const double top_rev_us           = 1300.0;  // cap reverse
+  const double min_us               = 1700.0;
+  const double max_us               = 1300.0;
 };
 
 }  // namespace gobilda_robot
