@@ -18,7 +18,7 @@ class State(Enum):
 
 ROBOT_WIDTH = 0.5
 ROBOT_LINEAR_SPEED = 0.01
-ROBOT_ANGULAR_SPEED = 0.05
+ROBOT_ANGULAR_SPEED = 0.03
 BUMP_DIST = 1.5
 
 
@@ -61,9 +61,9 @@ class BumpAndGo(Node):
         
         self.publisher_.publish(self.velocity_msg)
 
-        if (vel[0] == 0.0 and vel[1] == 0.0):
-            self.get_logger().info('sleeping for 2 secs')
-            time.sleep(2)
+        # if (vel[0] == 0.0 and vel[1] == 0.0):
+        #     self.get_logger().info('sleeping for 2 secs')
+        #     time.sleep(1)
         
         
             
@@ -119,7 +119,7 @@ class BumpAndGo(Node):
             # see if there is an opening of 4m infront of robot
             for point in robot_points:
                 if (-ROBOT_WIDTH/2 <= point[1] <= ROBOT_WIDTH/2): 
-                    if (0 <= point[0] <= 2.5):
+                    if (0 <= point[0] <= 3.0):
                         # there is an object within 4m infront of robot 
                         return (0.0, ROBOT_ANGULAR_SPEED)
                 
